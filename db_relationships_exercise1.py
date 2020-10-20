@@ -13,16 +13,16 @@ from database import DatabaseContextManager
 def create_table_customer():
     query = """CREATE TABLE IF NOT EXISTS Customer(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
-                firs_name TEXT,
+                first_name TEXT,
                 last_name TEXT,
                 amount_spent FLOAT
                 )"""
     with DatabaseContextManager("db2") as db:
         db.execute(query)
 
-def create_customer(name: str, last_name: str, amount: int):
-    query = """INSERT INTO Customer(name, last_name, amount) VALUES(?,?,?)"""
-    parameters = [name, last_name, amount]
+def create_customer(first_name: str, last_name: str, amount_spent: int):
+    query = """INSERT INTO Customer(first_name, last_name, amount_spent) VALUES(?,?,?)"""
+    parameters = [first_name, last_name, amount_spent]
     with DatabaseContextManager("db2") as db:
         db.execute(query, parameters)
 
@@ -36,11 +36,17 @@ def update_customer(id :int, first_name:str, last_name:str, amount_spent:float):
 
 def get_table_customer():
     query = """SELECT * FROM Customer"""
-    with DatabaseContextManager("db") as db:
+    with DatabaseContextManager("db2") as db:
         db.execute(query)
         for row in db.fetchall():
             print(row)
     print("-------------------------------------------")
+
+def drop_table_customer():
+        query = """DROP TABLE Customer"""
+        with DatabaseContextManager("db2") as db:
+            db.execute(query)
+
 
 def create_table_products():
     query = """CREATE TABLE Products(
@@ -68,7 +74,7 @@ def update_product(id :int, product_name:str, description:str, price:float):
 
 def get_table_product():
     query = """SELECT * FROM Product"""
-    with DatabaseContextManager("db") as db:
+    with DatabaseContextManager("db2") as db:
         db.execute(query)
         for row in db.fetchall():
             print(row)
@@ -87,12 +93,14 @@ def create_table_orders():
         db.execute(query)
 
 
-create_table_customer()
-#create_customer(name: str, last_name: str, amount: int)
+#create_table_customer()
+#create_customer("Antanas", "Antanaitis", 200)
 #update_customer(id :int, first_name:str, last_name:str, amount_spent:float)
-#get_table_customer()
+get_table_customer()
+#drop_table_customer()
 
-create_table_products()
+
+#create_table_products()
 #create_product(product_name: str, description: str, price: float)
 #update_product(id :int, product_name:str, description:str, price:float)
 #get_table_products()
