@@ -34,6 +34,13 @@ def update_customer(id :int, first_name:str, last_name:str, amount_spent:float):
     with DatabaseContextManager("db2") as db:
         db.execute(query, parameters)
 
+def get_table_customer():
+    query = """SELECT * FROM Customer"""
+    with DatabaseContextManager("db") as db:
+        db.execute(query)
+        for row in db.fetchall():
+            print(row)
+    print("-------------------------------------------")
 
 def create_table_products():
     query = """CREATE TABLE Products(
@@ -59,6 +66,14 @@ def update_product(id :int, product_name:str, description:str, price:float):
     with DatabaseContextManager("db2") as db:
         db.execute(query, parameters)
 
+def get_table_product():
+    query = """SELECT * FROM Product"""
+    with DatabaseContextManager("db") as db:
+        db.execute(query)
+        for row in db.fetchall():
+            print(row)
+    print("-------------------------------------------")
+
 def create_table_orders():
     query = """CREATE TABLE Orders(
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -70,4 +85,19 @@ def create_table_orders():
                 )"""
     with DatabaseContextManager("db2") as db:
         db.execute(query)
+
+
+#create_table_customer()
+#create_customer(name: str, last_name: str, amount: int)
+#update_customer(id :int, first_name:str, last_name:str, amount_spent:float)
+#get_table_customer()
+
+#create_table_products()
+#create_product(product_name: str, description: str, price: float)
+#update_product(id :int, product_name:str, description:str, price:float)
+#get_table_products()
+
+#create_table_orders()
+
+
 
