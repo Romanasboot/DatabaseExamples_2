@@ -86,3 +86,4 @@ def get_person_ssn():
         db.execute(query)
         for row in db.fetchall():
             print(row)
+

@@ -144,4 +144,18 @@ def drop_table():
 
 
 
+create_table_customer()
+#create_customer("Moony","Mouse", 17, 1)
+#get_customers()
+#delete_customer()
+#update_customer_first_name("Mikkes","Mike")
+#update_customer_on_id("Moony","Mouse",16,2)
+#get_customers()
+
+#create_table_companies()
+#create_company("UAB Spurga", 25)
+#create_company("MB RA-gelis", 5)
+#get_companies()
+#alter_table_customer()
+
 
