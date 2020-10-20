@@ -1,4 +1,4 @@
-import sqlite3
+from database import DatabaseContextManager
 
 #Table  = "Customer"
 #Fields =[id, first_name, last_name, amount_spent]
@@ -15,7 +15,7 @@ def create_table_customer():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 firs_name TEXT,
                 last_name TEXT,
-                amount_spent FLOAT,
+                amount_spent FLOAT
                 )"""
     with DatabaseContextManager("db2") as db:
         db.execute(query)
@@ -47,7 +47,7 @@ def create_table_products():
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 product_name TEXT,
                 description TEXT,
-                price FLOAT,
+                price FLOAT
                 )"""
     with DatabaseContextManager("db2") as db:
         db.execute(query)
@@ -87,12 +87,12 @@ def create_table_orders():
         db.execute(query)
 
 
-#create_table_customer()
+create_table_customer()
 #create_customer(name: str, last_name: str, amount: int)
 #update_customer(id :int, first_name:str, last_name:str, amount_spent:float)
 #get_table_customer()
 
-#create_table_products()
+create_table_products()
 #create_product(product_name: str, description: str, price: float)
 #update_product(id :int, product_name:str, description:str, price:float)
 #get_table_products()

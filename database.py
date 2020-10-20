@@ -144,7 +144,7 @@ def drop_table():
 
 
 
-create_table_customer()
+#create_table_customer()
 #create_customer("Moony","Mouse", 17, 1)
 #get_customers()
 #delete_customer()
